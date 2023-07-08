@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: #f5ebe0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+body h2:last-child {
+    text-align: left;
+}
+
+h1,
+h2,
+p,
+.formulario input,
+.login form input {
+    font-family: 'Neucha', cursive;
+}
+
+h1,
+h2 {
+    margin: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cerrar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+
+}
+
+.cerrar p {
+    padding: 0px 20px;
+}
+
+.cerrar a {
+    text-decoration: none;
+}
+
+.cuadroCampos,
+.cuadroRegistros {
+    width: 900px;
+    height: 50px;
+    margin: 15px;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 30px 30px 265px 265px 265px;
+    justify-content: center;
+    align-content: center;
+}
+
+.campos div {
+    background-color: #E3D5CA;
+}
+
+.registros div {
+    margin-bottom: 0px;
+}
+
+p {
+    text-align: center;
+    font-size: 21px;
+}
+
+.campos p {
+    color: white;
+}
+
+.botonEditar,
+.botonEliminar,
+.botonGuardar,
+.vacio1,
+.vacio2 {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin: 0px;
+}
+
+.botonEditar {
+    background-color: rgb(234, 178, 125);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.botonEliminar {
+    background-color: rgb(203, 92, 92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.botonGuardar {
+    background-color: #385E2E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.botonEditar p,
+.botonEliminar p {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.705);
+    font-weight: bold;
+}
+
+.botonGuardar p {
+    font-size: 14px;
+}
+
+.botonEditar p:nth-child(2) {
+    display: none;
+    font-size: 14px;
+}
+
+.formulario {
+    width: 650px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formulario input {
+    width: 177px;
+    font-size: 15px;
+}
+
+.formulario input:last-child {
+    width: 100px;
+}
+
+.cuadroRegistros input {
+    width: 200px;
+    margin-left: 30px;
+}
+
+/*A PARTIR DE AQUÍ EDITAMOS EL ESTILO DEL LOGIN*/
+img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.zonaLogo {
+    background-color: white;
+    width: 100%;
+}
+
+.login {
+    margin: 0px;
+}
+
+.login form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login form input {
+    font-size: 18px;
+    margin: 0px 2px;
+}
+
+/*A PARTIR DE AQUÍ HACEMOS LOS MEDIA QUERY PARA HACER RESPONSIVE EL PROYECTO*/
+
+@media screen and (max-width: 950px) {
+    .login form {
+        flex-direction: column;
+    }
+
+    .login p {
+        margin: 0px 10px;
+    }
+
+    .cuadroRegistros,
+    .cuadroCampos {
+        width: 650px;
+        grid-template-columns: 30px 30px 180px 180px 180px;
+    }
+
+    h1 {
+        font-size: 44px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .cuadroRegistros input {
+        width: 150px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 675px) {
+
+    .cuadroRegistros,
+    .cuadroCampos {
+        width: 490px;
+        grid-template-columns: 28px 28px 140px 140px 140px;
+    }
+
+    .formulario {
+        flex-direction: column;
+    }
+
+    .cuadroRegistros input {
+        width: 130px;
+        margin-left: 4px;
+      }
+}
+
+@media screen and (max-width: 500px) {
+    .login h1 {
+        font-size: 38px;
+    }
+
+    .login h2 {
+        font-size: 26px;
+    }
+
+    .login p {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .cuadroRegistros,
+    .cuadroCampos {
+        width: 320px;
+        grid-template-columns: 27px 27px 85px 85px 85px;
+    }
+
+    .cuadroCampos p,
+    .cuadroRegistros p {
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cuadroRegistros input {
+        width: 72px;
+        margin-left: 4px;
+      }
+}
+
+.displayNone {
+    display: none;
+}

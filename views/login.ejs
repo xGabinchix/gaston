@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet"> 
+    <title>LOGIN</title>
+</head>
+<body class="login">
+
+    <section class="zonaLogo">
+        <img src="/img/gaston_logo.png">
+    </section>
+    
+    <h1>¡BIENVENID@ A GASTÓN!</h1>
+    <h2>Ingresa tu usuario y contraseña.</h2>
+    
+    <form action="/login" method="POST">
+        <input type="text" name="usuario">
+        <input type="password" name="password">
+        <input type="submit" value="INICIAR SESIÓN">
+    </form>
+    <% if(error){ %>
+        <p><%= mensajeError %></p>
+    <% } %>
+    
+</body>
+</html>

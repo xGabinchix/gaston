@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+    
+    <title>INDEX</title>
+</head>
+
+<body>
+    <script src="/js/funciones.js"></script>
+    <section class="zonaLogo">
+        <img src="/img/gaston_logo.png">
+    </section>
+
+    <section class="cerrar">
+        <%
+            let suma = 0;
+            for (let i = 0; i < gastos.length; i++) {
+                suma += gastos[i].precio;
+            }
+        %>
+        <p>TOTAL GASTADO HASTA LA FECHA: <%= suma %> euros</p>
+        <p><a href="/logout">CERRAR SESIÓN</a></p>
+    </section>
+
+    <h1>MIS GASTOS</h1>
+    <h2>
+        <%= usuario %>, bienvenid@ a tu tracker personal de gastos.
+    </h2>
+
+    <form class="formulario" action="/" method="POST">
+        <input type="text" name="fecha" placeholder="Fecha"></input>
+        <input type="text" name="item" placeholder="Item"></input>
+        <input type="text" name="precio" placeholder="Precio"></input>
+        <input type="submit" value="AÑADIR GASTO">
+    </form>
+
+    <section class="campos">
+        <div class="cuadroCampos">
+            <div class="vacio1"></div>
+            <div class="vacio2"></div>
+            <p>Fecha</p>
+            <p>Item</p>
+            <p>Precio</p>
+        </div>
+    </section>
+
+    <section class="registros">
+        <% for(let i=0 ; i<gastos.length ; i++) { %>
+            <div class="cuadroRegistros cuadroRegistros_<%= gastos[i].id_g %>" data-id="<%= gastos[i].id_g %>">
+                <div class="botonEditar botonEditar_<%= gastos[i].id_g %>"
+                    onclick="editarGasto('<%= gastos[i].id_g %>')">
+                    <p>✎</p>
+                </div>
+                <div class="botonGuardar botonGuardar_<%= gastos[i].id_g %> displayNone"
+                    onclick="guardarGasto('<%= gastos[i].id_g %>')">
+                    <p>💾</p>
+                </div>
+                <div class="botonEliminar" onclick="borrarGasto('<%= gastos[i].id_g %>')">
+                    <p>🗑</p>
+                </div>
+                <div>
+                    <p class="fecha_dato_<%= gastos[i].id_g %>">
+                        <%= gastos[i].fecha %>
+                    </p>
+                    <input class="fecha_input_<%= gastos[i].id_g %> displayNone" value="<%= gastos[i].fecha %>" />
+                </div>
+                <div>
+                    <p class="item_dato_<%= gastos[i].id_g %>">
+                        <%= gastos[i].item %>
+                    </p>
+                    <input class="item_input_<%= gastos[i].id_g %> displayNone" value="<%= gastos[i].item %>" />
+                </div>
+                <div>
+                    <p class="precio_dato_<%= gastos[i].id_g %>">
+                        <%= gastos[i].precio %> euros
+                    </p>
+                    <input class="precio_input_<%= gastos[i].id_g %> displayNone" value="<%= gastos[i].precio %>" />
+                </div>
+            </div>
+            <% } %>
+    </section>
+
+</body>
+</html>
