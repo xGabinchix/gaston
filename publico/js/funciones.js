@@ -84,10 +84,12 @@ function editarGasto(id){
 async function borrarGasto(id){
     if(document){
         //Usamos fetch para enviar una petición DELETE a la URL /api/items/${id} (el id va variando según el elemento)
-        const respuesta = await fetch(`/api/items/${id}`, { method: "DELETE" });
+        const respuesta = await fetch(`/api/items/${id}`, { method: "DELETE" })
+        .then(respuesta => respuesta.json()); //recibe el "bien" o "mal" del back
         //Traemos cada div con la clase cuadroRegistros, que contiene la infomación de cada item y que identificamos por el id; luego indicamos que, si existe dicho div, este mismo se elimine
+        console.log(respuesta);
         let divParaBorrar = document.querySelector(".cuadroRegistros_"+id);
-        if(divParaBorrar){
+        if(respuesta.resultado == "bien"){
         divParaBorrar.remove();
         };
     };

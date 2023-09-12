@@ -69,7 +69,7 @@ servidor.post("/login", async (peticion, respuesta) => {
 servidor.get("/", async (peticion, respuesta) => {
     if(peticion.session.usuario){
     //Si el login fue satisfactorio (existe el usuario), esperamos la función leer de configuracion.js con el argumento peticion.session.id_u.id creado anteriormente
-        [error, resultados] = await leer(peticion.session.id_u.id);
+        const [error, resultados] = await leer(peticion.session.id_u.id);
         if(!error){
         //Si no hay error en la función leer, accedemos al index.ejs y le enviamos dos datos: el usuario y sus gastos
             return respuesta.render("index", {
@@ -88,7 +88,7 @@ servidor.post("/", async (peticion, respuesta) => {
         //Si el login fue satisfactorio (existe el usuario), extraemos los elementos fecha, item y precio del cuerpo de la petición
         let { fecha, item, precio } = peticion.body;
         //A dichos elementos se le añade el id de usuario (peticion.session.id_u.id), y estos cuatro se ponen como argumentos de la función crear de configuracion.js
-        [error, resultados] = await crear(peticion.session.id_u.id, fecha, item, precio);
+        const [error, resultados] = await crear(peticion.session.id_u.id, fecha, item, precio);
         if(!error){
             //Si no hay error en la función crear, accedemos al index.ejs donde se visualizarán los nuevos items
             return respuesta.redirect("/");
@@ -104,14 +104,16 @@ servidor.delete("/api/items/:id", async (peticion, respuesta) => {
         //Si el login fue satisfactorio (existe el usuario), creamos una constante para identificar el id del item que irá variando
         const id = peticion.params.id;
         //Dicho id se le asigna a la función borrar de configuracion.js, la cual esperamos
-        [error, resultados] = await borrar(id);
+        const [error, resultados] = await borrar(id);
         if(!error){
             //Si no hay error en la función borrar, accedemos al index.ejs donde se visualizarán los items menos los borrados
-            return respuesta.status(200).redirect("/");
+            //return respuesta.status(200).redirect("/");
+            return respuesta.json({ resultado : "bien" });
         };
     };
     //Si el login no es satisfactorio, redirigimos a la página de login
-    return respuesta.redirect("/login");
+    //return respuesta.redirect("/login");
+    return respuesta.json({ resultado : "mal" });
 });
 
 //Creamos la ruta para editar items, identificándolos por su id
@@ -121,7 +123,7 @@ servidor.put("/api/items/:id", async (peticion, respuesta) => {
         let { fecha, item, precio } = peticion.body;
         const id = peticion.params.id;
         //Estos cuatro elementos se le asignan como argumentos a la función editar de configuracion.js, a la cual esperamos
-        [error, resultados] = await editar(id, fecha, item, precio);
+        const [error, resultados] = await editar(id, fecha, item, precio);
         if(!error){
             //Si no hay error en la función editar, accedemos al index.ejs donde se visualizarán los items editados
             return respuesta.status(200).redirect("/login");
