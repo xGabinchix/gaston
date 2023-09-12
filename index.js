@@ -35,9 +35,9 @@ servidor.use("/", express.static("./publico"));
 
 //Creamos la ruta del login; siempre que el usuario no esté logueado, es redirigido a login
 servidor.get("/login", (peticion, respuesta) => {
-    if (!peticion.session.usuario) {
+    if(!peticion.session.usuario){
         return respuesta.render("login", { error: false, mensajeError: null });
-    }
+    };
     respuesta.redirect("/");
 });
 
@@ -58,7 +58,7 @@ servidor.post("/login", async (peticion, respuesta) => {
         //Si leerSesion resulta en error, enviamos a la consola un mensaje apropiado; también redirigimos a la página de login pero con un mensaje incluido que explique al usuario cuál fue el error 
             console.log("LOGIN ERRÓNEO")
             respuesta.render("login", { error: true, mensajeError: "HAY UN ERROR EN EL USUARIO O LA CONTRASEÑA. POR FAVOR, ESCRÍBELAS OTRA VEZ." });
-        }
+        };
     }catch(error){
     //Si hay un error en la petición, redirigimos a la página de login con un mensaje incluido que explique al usuario cuál fue el error
         return respuesta.render("login", { error: true, mensajeError: "ERROR EN EL SERVIDOR" });
