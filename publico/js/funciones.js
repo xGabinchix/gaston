@@ -50,7 +50,6 @@ async function guardarGasto(id) {
             elemento_precio_input.classList.add('displayNone')
         };
     };
-
 };
 
 //Creamos la función para cambiar los cambios hechos en un gasto (estamos en el estado editar gasto), para lo cual tomamos como argumento el id del item para identificarlo
@@ -79,7 +78,6 @@ function editarGasto(id){
         elemento_item_input.classList.remove('displayNone')
         elemento_precio_input.classList.remove('displayNone')
     };
-
 };
 
 //Creamos la función para eliminar gastos; al div con el símbolo de basurero se le ha colocado como propiedad un onclick en index.ejs para que al hacerle click venga a esta función
